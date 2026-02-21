@@ -1,0 +1,110 @@
+{% extends "layout.html" %}
+
+{% block title %}{{ title }} | MarketPulse News{% endblock %}
+
+{% block content %}
+<div class="container mt-4 mb-5" style="max-width: 850px;">
+    <!-- Back Button -->
+    <div class="mb-4">
+        <a href="/news" class="btn btn-outline-secondary btn-sm d-inline-flex align-items-center gap-2">
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path d="M19 12H5m7 7l-7-7 7-7"></path>
+            </svg>
+            Back to Feed
+        </a>
+    </div>
+
+    <!-- Article Header -->
+    <div class="glass-card p-4 p-md-5 mb-4 border-0" style="background: rgba(22, 27, 34, 0.4);">
+        <div class="d-flex align-items-center gap-3 mb-3">
+            <span class="badge bg-primary px-3 py-2" style="font-size: 0.75rem;">{{ source }}</span>
+            <span class="text-secondary small">{{ date }}</span>
+        </div>
+        <h1 class="display-5 fw-bold text-light mb-4" style="line-height: 1.2;">{{ title }}</h1>
+
+        <div class="d-flex justify-content-between align-items-center pt-3 border-top border-dark">
+            <div class="d-flex gap-4">
+                <span class="text-success d-flex align-items-center gap-2">
+                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                    </svg>
+                    <span class="fw-bold">MarketPulse Verified</span>
+                </span>
+            </div>
+            <div class="dropdown">
+                <button class="btn btn-outline-secondary btn-sm" type="button" data-bs-toggle="dropdown">
+                    Share
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Article Body -->
+    <div class="glass-card p-4 p-md-5 article-body-rich">
+        {% if content %}
+        {% for para in content %}
+        <p class="article-para">{{ para }}</p>
+        {% endfor %}
+        {% else %}
+        <div class="text-center py-5">
+            <div class="spinner-border text-primary" role="status"></div>
+            <p class="mt-3 text-secondary">Decrypting full story...</p>
+        </div>
+        {% endif %}
+
+        <!-- Market Sentiment Overlay -->
+        <div class="mt-5 p-4 rounded-4"
+            style="background: linear-gradient(135deg, rgba(88,166,255,0.1), rgba(0,0,0,0)); border: 1px solid rgba(88,166,255,0.1);">
+            <h5 class="text-primary mb-3">Reader Insights</h5>
+            <p class="text-secondary small mb-0">
+                This article has been processed by MarketPulse's proprietary content engine.
+                Our AI-driven sentiment analysis indicates a <b>{{ sentiment }}</b> outlook for the discussed assets.
+            </p>
+        </div>
+    </div>
+
+    <!-- Footer Action -->
+    <div class="text-center mt-5">
+        <a href="/news" class="btn btn-primary px-5 py-3 rounded-pill fw-bold">Finish and Return</a>
+    </div>
+</div>
+
+<style>
+    .article-body-rich {
+        background: var(--surface-color);
+        border: 1px solid var(--border-color);
+        border-radius: 16px;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+    }
+
+    .article-para {
+        font-size: 1.15rem;
+        line-height: 1.8;
+        color: #c9d1d9;
+        margin-bottom: 2rem;
+        letter-spacing: -0.01em;
+    }
+
+    .article-para::first-letter {
+        font-weight: 500;
+    }
+
+    /* Gradient Text Animation for Verification */
+    .text-success {
+        background: linear-gradient(90deg, #00FFA3, #00D1FF);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    @media (max-width: 768px) {
+        .display-5 {
+            font-size: 2rem;
+        }
+
+        .article-para {
+            font-size: 1.05rem;
+        }
+    }
+</style>
+{% endblock %}

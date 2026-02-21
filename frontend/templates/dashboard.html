@@ -1,0 +1,140 @@
+{% extends "layout.html" %}
+
+{% block title %}Dashboard | MarketPulse {% endblock %}
+
+{% block head %}
+<script src="https://unpkg.com/lightweight-charts/dist/lightweight-charts.standalone.production.js"></script>
+{% endblock %}
+
+{% block content %}
+
+<!-- TICKER -->
+<div class="ticker-wrap">
+  <div class="ticker" id="ticker">
+    <!-- JS Populated -->
+  </div>
+</div>
+
+<div class="container mt-4" style="max-width: 90%;">
+
+  <!-- TOOLBAR -->
+  <div class="d-flex flex-wrap justify-content-between align-items-center mb-4 gap-3">
+    <div class="search-container">
+      <input type="text" id="searchInput" class="search-input" placeholder="Search coins (BTC, ETH...)">
+    </div>
+    <!-- <div class="d-flex align-items-center gap-2">
+      <label class="text-secondary small mb-0 w-100">Select Date:</label>
+      <input type="date" id="dateFilter" class="form-control form-control-sm" style="max-width: 160px;" />
+    </div> -->
+
+  </div>
+  <div class="row g-4 mb-4">
+    <div class="col-lg-8">
+      <div class="glass-card h-100 p-0 overflow-hidden">
+        <div class="card-header border-0 bg-transparent p-3 pb-0 d-flex justify-content-between">
+          <div>
+            <h5 class="card-title mb-1" id="chartTitle">Market Trend (BTC)</h5>
+            <small class="text-secondary">Moving Average & Volume</small>
+          </div>
+          <div class="days btn-group">
+            <button class="btn btn-sm btn-outline-secondary" onclick="setChartPeriod('1D')">1D</button>
+            <button class="btn btn-sm btn-outline-secondary" onclick="setChartPeriod('1W')">1W</button>
+            <button class="btn btn-sm btn-outline-secondary" onclick="setChartPeriod('1M')">1M</button>
+          </div>
+        </div>
+        <div class="p-3" style="height: 350px; position:relative;">
+          <div id="marketChart" style="width: 100%; height: 100%;"></div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4">
+      <div class="glass-card h-100">
+        <div class="card-header border-0 bg-transparent p-3 pb-0">
+          <h5 class="card-title">Market Sentiment</h5>
+        </div>
+        <div id="sentiment-dashboard" class="p-3 d-flex flex-column gap-3 overflow-auto" style="max-height: 350px;">
+          <div class="text-center text-secondary mt-5">Loading sentiment...</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HEATMAP -->
+  <div class="d-flex justify-content-between align-items-center mb-2 px-1">
+    <h5 class="mb-0 text-secondary">Crypto Heatmap</h5>
+    <small class="text-muted">Size = Volume, Color = Change</small>
+  </div>
+  <div class="heatmap-container glass-card p-2 mb-4">
+    <div id="heatmap" class="heatmap-grid"></div>
+  </div>
+
+  <div class="mb-2 px-1">
+    <h5 class="mb-0 text-secondary">Market Screener</h5>
+  </div>
+
+  <!-- MARKET INDEX CARDS -->
+  <div class="row g-3 mb-4" id="indexCards">
+    <!-- JS Populated -->
+  </div>
+
+  <div class="text-center mb-5">
+    <button id="toggleCardsBtn" class="btn btn-outline-primary btn-sm">Show More</button>
+  </div>
+
+  <!-- MAIN GRID -->
+  <div class="row g-4">
+
+    <!-- MARKET SECTORS -->
+    <div class="col-lg-6 col-md-6">
+      <div class="glass-card h-100">
+        <div class="card-header">
+          <h5 class="card-title">Market Sectors</h5>
+          <div class="btn-group">
+            <button class="btn btn-sm btn-outline" onclick="filterMarkets('top')">Top</button>
+            <button class="btn btn-sm btn-outline" onclick="filterMarkets('mid')">Mid</button>
+          </div>
+        </div>
+        <div id="markets" class="market-list"></div>
+      </div>
+    </div>
+
+    <!-- MARKET MOVERS -->
+    <div class="col-lg-6 col-md-6">
+      <div class="glass-card h-100">
+        <div class="card-header">
+          <h5 class="card-title">Top Gainers</h5>
+          <div class="btn-group">
+            <button class="btn btn-sm btn-outline" onclick="filterGainers('top')">Top</button>
+            <button class="btn btn-sm btn-outline" onclick="filterGainers('mid')">Mid</button>
+          </div>
+        </div>
+        <div id="gainers" class="market-list"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- OVERVIEW TABLE -->
+  <div class="row mt-4 mb-5">
+    <div class="col-12">
+      <div class="glass-card">
+        <div class="card-header">
+          <h5 class="card-title">Detailed Market Overview</h5>
+        </div>
+        <div id="overview"></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- CHAT FAB -->
+<a href="/chatpage" class="chat-float" title="AI Assistant">
+  <span>💬</span>
+</a>
+
+{% endblock %}
+
+{% block scripts %}
+<script src="/static/js/dashboard.js"></script>
+<script src="/static/js/chart_logic.js"></script>
+{% endblock %}
