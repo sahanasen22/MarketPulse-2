@@ -1,0 +1,8 @@
+flask
+requests
+textblob
+openai
+werkzeug
+python-dotenv
+beautifulsoup4
+

@@ -1,0 +1,9 @@
+1. open terminal
+2. cd backend
+3. python3 app.py
+
+
+if already not setup 
+cd backend
+pip3 install -r requirements.txt
+python3 run.py

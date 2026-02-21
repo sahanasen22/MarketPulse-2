@@ -1,0 +1,55 @@
+{% extends "layout.html" %}
+
+{% block title %}AI Assistant | MarketPulse {% endblock %}
+
+{% block head %}
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+{% endblock %}
+
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="glass-card" style="height: 80vh; display: flex; flex-direction: column;">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <div>
+                        <h5 class="card-title mb-0">MarketPulse AI</h5>
+                        <span class="badge bg-primary">Online</span>
+                    </div>
+                    <button class="btn btn-sm btn-outline-info" onclick="downloadChatPDF()"
+                        title="Download Today's Report">
+                        <i class="fas fa-file-pdf"></i> Download PDF
+                    </button>
+                </div>
+
+                <div id="chat-box" class="flex-grow-1 overflow-auto p-3"
+                    style="background: rgba(0,0,0,0.2); border-radius: 8px;">
+                    <div class="bot-msg">
+                        Hello! I am your crypto market assistant. Ask me about Bitcoin trends or any other coin.
+                    </div>
+                </div>
+
+                <div class="p-3 border-top border-dark">
+                    <div class="input-group">
+                        <input type="text" id="message" class="form-control bg-dark text-white border-secondary"
+                            placeholder="Ask something..." onkeypress="handleEnter(event)">
+                        <button class="btn btn-primary" onclick="sendMessage()">Send</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function handleEnter(e) {
+        if (e.key === 'Enter') sendMessage();
+    }
+</script>
+{% endblock %}
+
+{% block scripts %}
+<script src="/static/js/chat.js"></script>
+{% endblock %}
