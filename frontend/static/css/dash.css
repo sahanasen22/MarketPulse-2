@@ -2,16 +2,16 @@
   --bg-color: #0d1117;
   --surface-color: #161b22;
   --surface-hover: #1c2128;
-  --primary-color: #58a6ff;
-  --secondary-color: #8b949e;
-  --accent-color: #238636;
+  --primary-color: #D4AF37;
+  --secondary-color: #B8860B;
+  --accent-color: #FFD700;
   --danger-color: #da3633;
   --text-primary: #f0f6fc;
-  --text-secondary: #8b949e;
+  --text-secondary: #B8860B;
   --border-color: #30363d;
   --glass-bg: rgba(22, 27, 34, 0.7);
-  --glass-border: 1px solid rgba(240, 246, 252, 0.1);
-  --shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  --glass-border: 1px solid rgba(212, 175, 55, 0.2);
+  --shadow: 0 4px 12px rgba(212, 175, 55, 0.15);
 }
 
 body {
@@ -48,15 +48,17 @@ a {
 }
 
 a:hover {
-  color: #79c0ff;
+  color: #FFD700;
   text-decoration: none;
 }
 
 /* UTILITIES */
 .text-gradient {
-  background: linear-gradient(135deg, #FF0080, #7928CA, #FF0080);
+  background: linear-gradient(135deg, #FFD700, #D4AF37, #FFD700);
+  background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  color: transparent;
   background-size: 200% 200%;
   animation: gradient 5s ease infinite;
 }
@@ -219,7 +221,7 @@ a:hover {
 }
 
 .btn-outline:hover {
-  background: rgba(88, 166, 255, 0.1);
+  background: rgba(212, 175, 55, 0.15);
   border-color: var(--primary-color);
 }
 
@@ -353,13 +355,13 @@ a:hover {
   width: 60px;
   height: 60px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #FF0080, #7928CA);
+  background: linear-gradient(135deg, #FFD700, #D4AF37);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: white;
+  color: #0d1117;
   font-size: 24px;
-  box-shadow: 0 4px 15px rgba(121, 40, 202, 0.4);
+  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.5);
   transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   z-index: 100;
   cursor: pointer;
@@ -367,6 +369,7 @@ a:hover {
 
 .chat-float:hover {
   transform: scale(1.1) rotate(10deg);
+  box-shadow: 0 6px 20px rgba(255, 215, 0, 0.6);
 }
 
 /* GRID SYSTEM OVERRIDES (Quick fixes to align with bootstrap utils if needed) */

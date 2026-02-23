@@ -32,7 +32,11 @@ app = Flask(__name__,
 app.secret_key = os.getenv("FLASK_SECRET_KEY", "crypto_secret_key")
 init_db()
 
-@app.route("/", methods=["GET", "POST"])
+@app.route("/")
+def loading():
+    return render_template("loading.html")
+
+@app.route("/login", methods=["GET", "POST"])
 def login():
     if request.method == "POST":
         uid = login_user(
