@@ -16,7 +16,7 @@ except ImportError:
                     key, value = line.split('=', 1)
                     os.environ[key.strip()] = value.strip()
 
-API_KEY = os.getenv("CRYPTOPANIC_API_KEY", "f833355d415afb4d8f92b1e6efaf89272d78c890")
+API_KEY = os.getenv("CRYPTOPANIC_API_KEY")
 
 def fetch_news(limit=50):
     url = f"https://cryptopanic.com/api/developer/v2/posts/?auth_token={API_KEY}"
@@ -104,5 +104,3 @@ def _convert_timestamp(ts):
     except:
         pass
     return datetime.now().isoformat()
-
-

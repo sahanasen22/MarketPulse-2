@@ -1,93 +1,40 @@
-# MarketPulse AI  
-### Intelligent Real-Time Digital Asset Market Analysis System
+# Crypto Project
 
----
+## Overview
+This is a Flask-based cryptocurrency dashboard application. It includes features for market data, news analysis, sentiment analysis, and a chatbot.
 
-## Abstract
+## Prerequisites
+- Python 3.8 or higher
 
-MarketPulse AI is an advanced analytics platform designed to bridge the gap between volatile digital asset markets and human interpretation. The system integrates real-time cryptocurrency market data with global news streams to provide a comprehensive analytical framework for market understanding.
+## Setup Instructions
 
-By combining structured numerical price metrics with unstructured news sentiment, MarketPulse AI delivers context-aware market summaries that explain underlying price movements. The platform incorporates Large Language Models (LLMs), including Llama 3.3 and Gemini, alongside Natural Language Processing techniques to generate intelligent, interpretable insights for retail investors.
+1. **Navigate to the project directory**
+   Open your terminal/command prompt and navigate to the project folder.
 
-The final system is presented as an interactive dashboard featuring live charts, sentiment indicators, and an AI-powered chatbot capable of answering personalized market queries. This approach significantly reduces information overload and improves analytical efficiency in highly volatile environments.
+2. **Navigate to the backend**
+   The core application logic lives in the `backend` folder.
+   ```bash
+   cd backend
+   ```
 
----
+3. **Install Dependencies**
+   Run the following command to install the required Python libraries:
+   ```bash
+   pip install flask requests textblob
+   ```
+   
+   *Note: If you encounter issues with textblob, you might need to run: `python -m textblob.download_corpora`*
 
-## Project Aim
+4. **Run the Application**
+   Start the Flask server:
+   ```bash
+   python app.py
+   ```
 
-The primary objective of MarketPulse AI is to develop an automated intelligence system capable of performing real-time digital asset market analysis through the integration of:
+5. **Access the Application**
+   Once the server is running, open your web browser and go to:
+   [http://127.0.0.1:5000](http://127.0.0.1:5000)
 
-- Technical market indicators
-- News-based sentiment analysis
-- Large Language Model reasoning
-- Context-aware summary generation
-
-The system evaluates global news as either **Positive** or **Negative** using sentiment analysis techniques and combines these results with price trend data. This dual-stream analysis enhances decision-making accuracy and supports timely identification of market opportunities.
-
-The project aims to:
-
-- Reduce manual research time
-- Improve interpretation of volatile market shifts
-- Support informed investment strategies
-- Enhance risk management awareness
-
----
-
-## Key Features
-
-- Real-time cryptocurrency market data integration  
-- News aggregation from external APIs  
-- Sentiment classification (Positive / Negative)  
-- LLM-powered contextual reasoning  
-- Interactive web dashboard  
-- AI-driven chatbot for personalized insights  
-- Integrated technical and sentiment analytics  
-
----
-
-## System Architecture Overview
-
-MarketPulse AI operates on a dual-input analytical framework:
-
-1. **Structured Data Stream**
-   - Live cryptocurrency price metrics
-   - Market trend indicators
-
-2. **Unstructured Data Stream**
-   - News headlines and articles
-   - Sentiment extraction using NLP techniques
-   - LLM-based contextual interpretation
-
-The integration of these streams produces intelligent summaries explaining potential causes behind market fluctuations.
-
----
-
-## Technology Stack
-
-### Backend
-- Python
-- Flask
-- Requests
-- TextBlob (Sentiment Analysis)
-- Large Language Model APIs (Llama 3.3, Gemini)
-
-### Frontend
-- HTML
-- CSS
-- JavaScript
-
-### Data Sources
-- Cryptocurrency Market APIs
-- News APIs
-
-### Database
-- SQLite
-
----
-
-## Installation & Setup
-
-### 1. Navigate to Backend Directory
-
-```bash
-cd backend
+## Project Structure
+- `backend/`: contains the Flask app and Python logic.
+- `frontend/`: contains HTML templates and static files (CSS, JS).
